@@ -5,8 +5,9 @@ module OmniAuth
     class Myadventist < OmniAuth::Strategies::OAuth
       option :name, 'myadventist'
       option :client_options, {
-        authorize_path: '/oauth/authorize',
         site: 'https://test.myadventist.org.au',
+        authorize_path: '/oauth/authorize',
+        token_url: '/oauth/gettoken'
       }
 
       uid { access_token.params[:user_id] }
