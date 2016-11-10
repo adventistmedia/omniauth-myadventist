@@ -11,7 +11,7 @@ Gem::Specification.new do |spec|
 
   spec.summary       = %q{myAdventist Omniauth strategy}
   spec.description   = %q{myAdventist Omniauth strategy}
-  spec.homepage      = "myadventist.org.au."
+  spec.homepage      = "http://myadventist.org.au."
   spec.license       = "MIT"
 
   spec.files         = `git ls-files -z`.split("\x0").reject do |f|
@@ -23,8 +23,8 @@ Gem::Specification.new do |spec|
 
   spec.required_ruby_version = '>= 2.0'
 
-  spec.add_runtime_dependency 'omniauth', '>= 1.1.1'
-  spec.add_runtime_dependency 'omniauth-oauth2', '>= 1.3.1'
+  spec.add_dependency 'omniauth', '~> 1.0'
+  spec.add_dependency 'omniauth-oauth2', '~> 1.1'
 
   spec.add_development_dependency "bundler", "~> 1.13"
   spec.add_development_dependency "rake", "~> 10.0"
