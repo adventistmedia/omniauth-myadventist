@@ -18,7 +18,53 @@ Or install it yourself as:
 
 ## Usage
 
+The following is a simple example of using myadventist within your rails application.
+To begin you'll need to setup an omniauth initializer. In config/initializers/omniauth.rb add:
 
+```ruby
+Rails.application.config.middleware.use OmniAuth::Builder do
+  provider :myadventist, Rails.application.secrets.myadventist_client_id, Rails.application.secrets.myadventist_client_secret
+end
+```
+
+A callback URL also needs to be added to routes.rb The route can point to any controller action of your choice.
+
+```ruby
+get '/auth/:provider/callback', to: 'sessions#create'
+```
+
+From your callback, authentication can take place.
+
+```ruby
+class SessionsController < ApplicationController
+
+  def create
+    if @user = User.from_omniauth( request.env['omniauth.auth'] )
+      self.current_user = @user
+      redirect_to root_path
+    else
+      redirect_to login_path
+    end
+  end
+
+end
+```
+
+The omniauth.auth object is available for the users info. Note that the uid provided by myAdventist is actually the access_token rather than the user ID. This uid will be different for different applications.
+
+```ruby
+#<OmniAuth::AuthHash credentials=#<OmniAuth::AuthHash expires=false token="1234-67890-5678-34567"> extra=#<OmniAuth::AuthHash> info=#<OmniAuth::AuthHash::InfoHash email="bobgoodman@email.com" first_name="Bob" last_name="Goodman" name="Bob Goodman"> provider="myadventist" uid="1234-67890-5678-34567">
+```
+
+In models/user.rb you can handle your authentication checking based on the uid and provider.
+
+```ruby
+class User < ApplicationRecord
+  def self.from_omniauth(auth)
+    where(provider: auth.provider, uid: auth.uid).first
+  end
+end
+```
 
 ## Development
 
@@ -28,7 +74,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/omniauth-myadventist. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
+Bug reports and pull requests are welcome on GitHub at https://github.com/adventistmedia/omniauth-myadventist. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
 
 
 ## License
