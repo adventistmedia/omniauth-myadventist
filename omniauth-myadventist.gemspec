@@ -9,8 +9,8 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Dan Lewis"]
   spec.email         = ["webmaster@adventistmedia.org.au"]
 
-  spec.summary       = %q{myAdventist Omniauth strategy}
-  spec.description   = %q{myAdventist Omniauth strategy}
+  spec.summary       = %q{myAdventist omniauth strategy}
+  spec.description   = %q{myAdventist omniauth strategy}
   spec.homepage      = "http://myadventist.org.au"
   spec.license       = "MIT"
 
@@ -24,7 +24,6 @@ Gem::Specification.new do |spec|
   spec.required_ruby_version = '>= 2.0'
 
   spec.add_dependency 'omniauth-oauth2', '~> 1.4.0'
-  spec.add_development_dependency 'byebug'
   spec.add_development_dependency "bundler", "~> 1.13"
   spec.add_development_dependency "rake", "~> 10.0"
 end
