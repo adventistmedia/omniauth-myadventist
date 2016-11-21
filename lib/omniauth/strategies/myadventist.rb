@@ -11,14 +11,15 @@ module OmniAuth
         token_url: '/oauth/gettoken'
       }
 
-      uid { access_token.token }
+      uid { raw_info['uid'] }
 
       info do
         {
           'email' => raw_info['PrimaryEmail'],
           'name' => "#{raw_info['FirstName']} #{raw_info['LastName']}",
           'first_name' => raw_info['FirstName'],
-          'last_name' => raw_info['LastName']
+          'last_name' => raw_info['LastName'],
+          'uid' => raw_info['UserId']
         }
       end
 
