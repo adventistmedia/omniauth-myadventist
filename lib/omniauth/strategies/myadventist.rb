@@ -6,9 +6,10 @@ module OmniAuth
 
       option :name, 'myadventist'
       option :client_options, {
-        site: 'https://test.myadventist.org.au',
+        site: 'https://myadventist.org.au',
         authorize_url: '/oauth/authorize',
-        token_url: '/oauth/gettoken'
+        token_url: '/oauth/gettoken',
+        info_url: '/oauth/userinfo'
       }
 
       uid { raw_info['UserId'] }
@@ -23,7 +24,7 @@ module OmniAuth
       end
 
       def raw_info
-        @raw_info ||= access_token.post('https://test.myadventist.org.au/oauth/userinfo', params: raw_info_params).parsed || {}
+        @raw_info ||= access_token.post(client.site + client.options[:info_url], params: raw_info_params).parsed || {}
       end
 
       def raw_info_params

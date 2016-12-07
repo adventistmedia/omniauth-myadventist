@@ -27,6 +27,16 @@ Rails.application.config.middleware.use OmniAuth::Builder do
 end
 ```
 
+To use https://test.myadventist.org you can override the client site:
+
+```ruby
+Rails.application.config.middleware.use OmniAuth::Builder do
+  client_options = {}
+  client_options[:site] = 'https://test.myadventist.org.au' unless Rails.env.production?
+  provider :myadventist, Rails.application.secrets.myadventist_client_key, Rails.application.secrets.myadventist_client_secret, client_options: client_options
+end
+```
+
 A callback URL also needs to be added to routes.rb The route can point to any controller action of your choice.
 
 ```ruby
