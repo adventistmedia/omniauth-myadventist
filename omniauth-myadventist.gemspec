@@ -6,7 +6,7 @@ require 'omniauth-myadventist/version'
 Gem::Specification.new do |spec|
   spec.name          = "omniauth-myadventist"
   spec.version       = OmniAuth::Myadventist::VERSION
-  spec.authors       = ["Dan Lewis"]
+  spec.authors       = ["Adventist Media"]
   spec.email         = ["webmaster@adventistmedia.org.au"]
 
   spec.summary       = %q{myAdventist omniauth strategy}
@@ -23,7 +23,7 @@ Gem::Specification.new do |spec|
 
   spec.required_ruby_version = '>= 2.0'
 
-  spec.add_dependency 'omniauth-oauth2', '~> 1.4.0'
+  spec.add_dependency 'omniauth-oauth2', '~> 1.5.0'
   spec.add_development_dependency "bundler", "~> 1.13"
-  spec.add_development_dependency "rake", "~> 10.0"
+  spec.add_development_dependency "rake", "~> 12.0"
 end
