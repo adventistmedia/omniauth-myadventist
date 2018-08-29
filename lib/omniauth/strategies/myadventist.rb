@@ -6,7 +6,7 @@ module OmniAuth
 
       option :name, 'myadventist'
       option :client_options, {
-        site: 'https://myadventist.org.au',
+        site: 'https://myadventist.org',
         authorize_url: '/oauth/authorize',
         token_url: '/oauth/gettoken',
         info_url: '/oauth/userinfo'

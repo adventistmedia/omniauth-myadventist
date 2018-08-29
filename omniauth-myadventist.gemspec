@@ -11,7 +11,7 @@ Gem::Specification.new do |spec|
 
   spec.summary       = %q{myAdventist omniauth strategy}
   spec.description   = %q{myAdventist omniauth strategy}
-  spec.homepage      = "http://myadventist.org.au"
+  spec.homepage      = "http://myadventist.org"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files -z`.split("\x0").reject do |f|
